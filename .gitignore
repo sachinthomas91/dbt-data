@@ -1,0 +1,67 @@
+# DBT build artifacts
+/target/
+/dbt_packages/
+/logs/
+
+# Python virtual environments
+/venv*/
+/dbt-env/
+/venv-genai/
+/venv-learnpy/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Editor/IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Sensitive files
+.env
+.env.*
+*.env
+*.key
+*.pem
+*.crt
+*.pfx
+*.p12
+*.cer
+*.der
+*.jks
+*.keystore
+*.p8
+*.p7b
+*.p7c
+*.asc
+*.gpg
+*.pgp
+*.json_secret
+*.token
+*.credentials
+secrets*/
+private*/
+
+# Personal folders (add more as needed)
+samples/
+
+# Prevent accidental data/model leaks
+*.csv
+!seeds/**/*.csv
+*.tsv
+*.parquet
+*.xlsx
+*.xls
+*.jsonl
+*.sqlite
+*.db
+*.bak
+*.log
+
+# Node modules (if any JS tooling is used)
+/node_modules/
