@@ -1,4 +1,3 @@
-
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
@@ -26,11 +25,51 @@ clean-targets:         # directories to be removed by `dbt clean`
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
-# In this example config, we tell dbt to build all models in the example/
-# directory as views. These settings can be overridden in the individual model
-# files using the `{{ config(...) }}` macro.
+# In this example config, we tell dbt to build all models in the models/subfolder
+# based on the `+materialized` config. Also defines the schema for each folder.
+# Additional macro has been defined to set the schema for each folder based on the target (default is dev).
+# environment (macros/generate_schema.sql). This is useful for separating development, staging, and production environments.
+# In the current setup dev/staging/production are separated by schemas. Ideally, you would
+# want to have a separate database for each environment
 models:
   dbt_data:
-    # Config indicated by + and applies to all files under models/example/
+    # Config indicated by + and applies to all files under models/folder_name
+
     example:
+      +materialized: table  # Override materialization for models in the example folder
+      +schema: example     # Override schema for models in the example folder
+
+    staging:
       +materialized: view
+      +schema: clean # This schema is used for staging and cleaning data
+    
+    intermediate:
+      +materialized: table
+      +schema: logic # This schema is used for logic and transformations
+
+    marts:
+      analytics:
+        +materialized: view
+        +schema: analytics # This schema is used for analytics and reporting
+      core:
+        +schema: core
+        +materialized: table
+      finance:
+        +schema: finance
+        +materialized: table
+
+# This is the default schema where dbt will create seeds and snapshots.
+# You can override this in your dbt profile.
+seeds:
+  dbt_data:
+      +materialized: seed
+      +schema: seeds # This schema is used for seed data
+      # olist_closed_deals_dataset:
+        # column_types:
+        #   average_stock: string
+        #   won_date: string
+
+snapshots:
+  dbt_data:
+      +materialized: table
+      +schema: snapshots # This schema is used for snapshots
