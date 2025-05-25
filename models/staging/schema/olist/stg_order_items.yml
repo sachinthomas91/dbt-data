@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: stg_order_items
+    description: "Staging model for detailed breakdown of each product in every order"
+    columns:
+      - name: order_id
+        description: "Unique identifier for an order"
+      - name: order_item_id
+        description: "Sequential ID for items within the same order"
+      - name: product_id
+        description: "Unique identifier for the product"
+      - name: seller_id
+        description: "ID of the seller fulfilling this order item"
+      - name: shipping_limit_datetime
+        description: "Datetime limit for the seller to ship the item"
+      - name: item_price
+        description: "Selling price of the product"
+      - name: freight_value
+        description: "Shipping fee charged by the seller"

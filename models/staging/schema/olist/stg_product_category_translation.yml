@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: stg_product_category_translation
+    description: "Staging model mapping original Portuguese product category names to their English translations"
+    columns:
+      - name: product_category_name
+        description: "Original product category name in Portuguese"
+      - name: product_category_name_english
+        description: "Translated product category name in English"

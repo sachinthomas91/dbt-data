@@ -35,28 +35,43 @@ models:
   dbt_data:
     # Config indicated by + and applies to all files under models/folder_name
 
-    example:
-      +materialized: table  # Override materialization for models in the example folder
-      +schema: example     # Override schema for models in the example folder
+    # example:
+    #   +materialized: table  # Override materialization for models in the example folder
+    #   +schema: example     # Override schema for models in the example folder
 
     staging:
       +materialized: view
-      +schema: clean # This schema is used for staging and cleaning data
+      +schema: staging # This schema is used for staging and cleaning data
+      +persist_docs:
+        relation: true     # persist table descriptions
+        columns: true      # persist column descriptions
     
     intermediate:
       +materialized: table
-      +schema: logic # This schema is used for logic and transformations
+      +schema: intermediate # This schema is used for logic and transformations
+      +persist_docs:
+        relation: true     # persist table descriptions
+        columns: true      # persist column descriptions
 
     marts:
       analytics:
         +materialized: view
         +schema: analytics # This schema is used for analytics and reporting
+        +persist_docs:
+          relation: true     # persist table descriptions
+          columns: true      # persist column descriptions
       core:
         +schema: core
         +materialized: table
+        +persist_docs:
+          relation: true     # persist table descriptions
+          columns: true      # persist column descriptions
       finance:
         +schema: finance
         +materialized: table
+        +persist_docs:
+          relation: true     # persist table descriptions
+          columns: true      # persist column descriptions
 
 # This is the default schema where dbt will create seeds and snapshots.
 # You can override this in your dbt profile.
@@ -64,12 +79,11 @@ seeds:
   dbt_data:
       +materialized: seed
       +schema: seeds # This schema is used for seed data
-      # olist_closed_deals_dataset:
-        # column_types:
-        #   average_stock: string
-        #   won_date: string
 
 snapshots:
   dbt_data:
       +materialized: table
       +schema: snapshots # This schema is used for snapshots
+      +persist_docs:
+        relation: true     # persist table descriptions
+        columns: true      # persist column descriptions

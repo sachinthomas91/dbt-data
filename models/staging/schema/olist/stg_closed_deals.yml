@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: stg_closed_deals
+    description: "Staging model for closed deals, including lead, seller, and business details"
+    columns:
+      - name: mql_id
+        description: "Unique marketing qualified lead identifier for the closed deal"
+      - name: seller_id
+        description: "Unique identifier for the seller"
+      - name: sdr_id
+        description: "ID of the Sales Development Representative"
+      - name: sr_id
+        description: "ID of the Sales Representative"
+      - name: deal_closed_datetime
+        description: "Datetime when the deal was closed"
+      - name: lead_business_segment
+        description: "Business segment of the lead"
+      - name: lead_business_channel_category
+        description: "Classified business channel category (Online/Offline)"
+      - name: lead_business_tier
+        description: "Classified business tier (Beginner/Small/Medium/Big/Top/Other/Industry)"
+      - name: lead_behaviour_profile_category
+        description: "SDR identified behavior profile category for the lead"
+      - name: has_company
+        description: "Indicates if the lead has a company (formal documentation)"
+      - name: has_gtin
+        description: "Indicates if the lead has a GTIN [Global Trade Item Number (barcode)]"
+      - name: lead_business_average_stock
+        description: "Average stock reported by the business."
+      - name: lead_business_category
+        description: "Category of business for the lead (e.g., Reseller, Manufacturer)"
+      - name: lead_business_product_catalog_size
+        description: "Reported product catalog size for the business"
+      - name: lead_business_monthly_revenue
+        description: "Reported monthly revenue for the business"

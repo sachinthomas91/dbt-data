@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: stg_products
+    description: "Staging model for product catalog with metadata and category info"
+    columns:
+      - name: product_id
+        description: "Unique identifier for each product"
+      - name: product_category
+        description: "Original category name in Portuguese"
+      - name: product_name_length
+        description: "Number of characters in the product name"
+      - name: product_description_length
+        description: "Number of characters in the product description"
+      - name: product_photos_qty
+        description: "Number of product photos available"
+      - name: product_weight_gm
+        description: "Weight of the product (grams)"
+      - name: product_length_cm
+        description: "Length of the product (cm)"
+      - name: product_height_cm
+        description: "Height of the product (cm)"
+      - name: product_width_cm
+        description: "Width of the product (cm)"
