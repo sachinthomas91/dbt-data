@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: stg_marketing_qualified_leads
+    description: "Staging model for marketing qualified leads related to Olist's marketing campaigns"
+    columns:
+      - name: mql_id
+        description: "Unique identifier for the marketing qualified lead"
+      - name: mql_first_contact_date
+        description: "Date of the first contact for the MQL"
+      - name: mql_landing_page_id
+        description: "Landing page ID associated with the MQL"
+      - name: mql_origin_category
+        description: "Origin category of the MQL"

@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: "Staging model for order-level information such as status and delivery timestamps"
+    columns:
+      - name: order_id
+        description: "Unique identifier for an order"
+      - name: customer_id
+        description: "Customer who placed the order"
+      - name: order_status
+        description: "Current status of the order (e.g., delivered, shipped, canceled)"
+      - name: order_purchase_timestamp
+        description: "Timestamp when the order was placed"
+      - name: order_approved_at
+        description: "Timestamp when the order was approved by payment system"
+      - name: order_delivered_carrier_date
+        description: "When the seller handed the order to the carrier"
+      - name: order_delivered_customer_date
+        description: "When the customer received the order"
+      - name: order_estimated_delivery_date
+        description: "Estimated delivery date quoted to the customer"

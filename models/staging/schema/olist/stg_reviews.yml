@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: stg_reviews
+    description: "Staging model for customer reviews and feedback on their orders"
+    columns:
+      - name: review_id
+        description: "Unique identifier for each review"
+      - name: order_id
+        description: "Associated order ID for the review"
+      - name: review_score
+        description: "Customer rating score (1 to 5)"
+      - name: review_comment_title
+        description: "Optional short title of the review"
+      - name: review_comment_message
+        description: "Optional detailed comment of the review"
+      - name: review_creation_datetime
+        description: "Date the review was created"
+      - name: review_answer_datetime
+        description: "Timestamp when the review was responded to"

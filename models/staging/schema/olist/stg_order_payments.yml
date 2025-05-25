@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: stg_order_payments
+    description: "Staging model for payment data for each order. One order may have multiple payment rows if multiple payment methods were used"
+    columns:
+      - name: order_id
+        description: "Unique identifier for an order"
+      - name: payment_sequential
+        description: "Index indicating the sequence of payment methods used"
+      - name: payment_type
+        description: "Payment method used (e.g., credit_card, boleto, voucher)"
+      - name: payment_installments
+        description: "Number of installments paid by the customer"
+      - name: payment_value
+        description: "Total amount paid with this payment method"

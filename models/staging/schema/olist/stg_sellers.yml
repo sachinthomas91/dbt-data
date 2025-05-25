@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: stg_sellers
+    description: "Staging model for information about marketplace sellers"
+    columns:
+      - name: seller_id
+        description: "Unique identifier for each seller"
+      - name: seller_zip_code
+        description: "Prefix of the seller’s zip code"
+      - name: seller_city
+        description: "City where the seller is located"
+      - name: seller_state
+        description: "State where the seller is located"

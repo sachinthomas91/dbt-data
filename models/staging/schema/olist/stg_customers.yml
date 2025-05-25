@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: "Staging model for customers with anonymized location data"
+    columns:
+      - name: customer_id
+        description: "Unique identifier of a customer"
+      - name: order_customer_id
+        description: "Key to the orders dataset. Each order has a unique order customer_id"
+      - name: customer_zip_code
+        description: "Prefix of the customer’s zip code"
+      - name: customer_city
+        description: "City where the customer is located"
+      - name: customer_state
+        description: "State where the customer is located"
