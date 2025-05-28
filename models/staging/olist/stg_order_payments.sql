@@ -7,7 +7,10 @@ renamed as (
         order_id,
         payment_sequential as payment_type_sequence,
         INITCAP(REPLACE(payment_type, '_', ' ')) as payment_type,
-        payment_installments as payment_installment_row_number,
+        case
+            when payment_installments=0 then 1
+            else payment_installments
+        end as payment_installment_count,
         payment_value
     from 
         source

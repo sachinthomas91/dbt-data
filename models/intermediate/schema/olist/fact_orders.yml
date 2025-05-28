@@ -1,0 +1,89 @@
+version: 2
+
+models:
+  - name: fact_orders
+    description: "Fact table containing order transactions, payments, and delivery metrics from Olist e-commerce data"
+    columns:
+      - name: order_id
+        description: "Unique identifier for each order"
+        tests:
+          - unique
+          - not_null
+
+      - name: order_customer_id
+        description: "Customer ID associated with the order"
+
+      - name: order_status
+        description: "Current status of the order"
+
+      - name: order_item_count
+        description: "Number of items in the order"
+
+      - name: order_item_price_total
+        description: "Total price of all items in the order (excluding freight)"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+
+      - name: order_freight_total
+        description: "Total freight value for the order"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+
+      - name: order_total
+        description: "Total order value including items and freight"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+
+      - name: payment_count
+        description: "Number of payments made for the order"
+
+      - name: payment_method_type_count
+        description: "Number of different payment methods used"
+
+      - name: payment_installment_count
+        description: "Maximum number of installments across all payments"
+
+      - name: payment_total
+        description: "Total payment amount for the order"
+
+      - name: review_score
+        description: "Customer review score for the order (1-5)"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 1
+              max_value: 5
+
+      - name: time_to_approval_hours
+        description: "Hours between order purchase and approval"
+
+      - name: time_to_ship_hours
+        description: "Hours between order purchase and carrier pickup"
+
+      - name: time_to_deliver_hours
+        description: "Hours between order purchase and customer delivery"
+
+      - name: delivery_estimation_slip_hours
+        description: "Hours between actual and estimated delivery (negative means early delivery)"
+
+      - name: order_purchase_datetime
+        description: "Timestamp when the order was placed"
+        tests:
+          - not_null
+
+      - name: order_approved_datetime
+        description: "Timestamp when the order was approved"
+
+      - name: order_delivered_carrier_datetime
+        description: "Timestamp when the order was handed to the carrier"
+
+      - name: order_delivered_customer_datetime
+        description: "Timestamp when the order was delivered to the customer"
+
+      - name: order_estimated_delivery_datetime
+        description: "Estimated delivery timestamp provided to customer"

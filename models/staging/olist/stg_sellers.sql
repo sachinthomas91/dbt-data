@@ -6,8 +6,8 @@ renamed as (
     select
         seller_id,
         seller_zip_code_prefix as seller_zip_code,
-        seller_city,
-        seller_state
+        INITCAP(seller_city) as seller_city,
+        INITCAP(seller_state) as seller_state
     from 
         source
     where 

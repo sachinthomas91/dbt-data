@@ -6,6 +6,9 @@ models:
     columns:
       - name: review_id
         description: "Unique identifier for each review"
+        tests:
+          - unique
+          - not_null
       - name: order_id
         description: "Associated order ID for the review"
       - name: review_score

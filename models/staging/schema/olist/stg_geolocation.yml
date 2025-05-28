@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: stg_geolocation
+    description: "Staging table for geolocation data from Olist e-commerce dataset. Modified light version of the original geolocation table, focusing on essential attributes for city and state identification."
+    columns:
+      - name: zip_code
+        description: "Postal code prefix"
+        tests:
+          - not_null
+
+      - name: city
+        description: "City name"
+        tests:
+          - not_null
+
+      - name: state
+        description: "State or region identifier"
+        tests:
+          - not_null

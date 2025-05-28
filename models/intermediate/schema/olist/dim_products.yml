@@ -1,27 +1,35 @@
 version: 2
 
 models:
-  - name: stg_products
-    description: "Staging model for product catalog with metadata and category info"
+  - name: dim_products
+    description: "Product dimension table containing product attributes from Olist e-commerce data"
     columns:
       - name: product_id
         description: "Unique identifier for each product"
         tests:
           - unique
           - not_null
+      
       - name: product_category
-        description: "Original category name in Portuguese"
+        description: "Category name of the product"
+
       - name: product_name_length
         description: "Number of characters in the product name"
+
       - name: product_description_length
         description: "Number of characters in the product description"
+
       - name: product_photos_qty
-        description: "Number of product photos available"
+        description: "Number of product photos"
+
       - name: product_weight_gm
-        description: "Weight of the product (grams)"
+        description: "Product weight in grams"
+
       - name: product_length_cm
-        description: "Length of the product (cm)"
+        description: "Product length in centimeters"
+
       - name: product_height_cm
-        description: "Height of the product (cm)"
+        description: "Product height in centimeters"
+
       - name: product_width_cm
-        description: "Width of the product (cm)"
+        description: "Product width in centimeters"
