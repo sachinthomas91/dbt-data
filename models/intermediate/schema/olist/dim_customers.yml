@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: "Customer dimension table containing standardized customer attributes from Olist e-commerce data, enriched with geolocation data"
+    columns:
+      - name: customer_id
+        description: "Unique identifier for each customer"
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_zip_code
+        description: "Customer's postal code"
+
+      - name: customer_city
+        description: "Customer's city name, enriched with geolocation data when available"
+
+      - name: customer_state
+        description: "Customer's state identifier, enriched with geolocation data when available"

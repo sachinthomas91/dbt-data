@@ -6,11 +6,11 @@ models:
     columns:
       - name: order_id
         description: "Unique identifier for an order"
-      - name: payment_sequential
+      - name: payment_type_sequence
         description: "Index indicating the sequence of payment methods used"
       - name: payment_type
         description: "Payment method used (e.g., credit_card, boleto, voucher)"
-      - name: payment_installments
-        description: "Number of installments paid by the customer"
+      - name: payment_installment_count
+        description: "Number of installments chosen by the customer"
       - name: payment_value
         description: "Total amount paid with this payment method"

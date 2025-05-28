@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: agg_daily_sales
+    description: "Daily aggregated sales metrics from Olist orders including order counts, revenue, and customer satisfaction"
+    columns:
+      - name: order_date
+        description: "Date of order purchase (normalized from datetime)"
+        tests:
+          - not_null
+          - unique
+
+      - name: total_order_count
+        description: "Total number of orders placed on this date"
+
+      - name: canceled_order_count
+        description: "Number of orders with 'Canceled' status on this date"
+
+      - name: unavaialble_order_count
+        description: "Number of orders with 'Unavailable' status on this date"
+
+      - name: total_order_value
+        description: "Sum of order_total (items + freight) for all orders on this date"
+
+      - name: total_paid
+        description: "Sum of all payments received for orders on this date"
+
+      - name: lost_revenue_canceled
+        description: "Sum of payments for canceled orders on this date"
+
+      - name: lost_revenue_unavailable
+        description: "Sum of payments for unavailable orders on this date"
+
+      - name: avg_review_score
+        description: "Average customer review score for orders on this date (1-5 scale)"

@@ -6,6 +6,9 @@ models:
     columns:
       - name: customer_id
         description: "Unique identifier of a customer"
+        tests:
+          - unique
+          - not_null
       - name: order_customer_id
         description: "Key to the orders dataset. Each order has a unique order customer_id"
       - name: customer_zip_code
