@@ -6,7 +6,15 @@ This project demonstrates a real-world DBT implementation using **Google BigQuer
 - [Marketing Funnel by Olist](https://www.kaggle.com/datasets/olistbr/marketing-funnel-olist)
 
 Data citation:
-> Olist. (2018). Brazilian E-Commerce Public Dataset & Marketing Funnel Dataset. Kaggle. https://www.kaggle.com/olistbr
+> Olist. (2018). Brazilian E-Commerce Public Dataset & Marketing Funnel Dataset. Kaggle. https://www.kaggle.com/organizations/olistbr
+
+---
+
+## 📊 Data Model
+
+Below is the lineage graph showing how data flows through the warehouse, from source tables to final marts:
+
+![DBT Lineage Graph](src/assets/img/dbt-lineage-graph.jpg)
 
 ---
 
