@@ -9,7 +9,7 @@ renamed as (
         customer_id as order_customer_id,
         customer_zip_code_prefix as customer_zip_code,
         INITCAP(customer_city) as customer_city,
-        INITCAP(customer_state) as customer_state
+        UPPER(customer_state) as customer_state
     from 
         source
     where

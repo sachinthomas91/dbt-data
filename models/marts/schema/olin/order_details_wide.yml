@@ -1,0 +1,112 @@
+version: 2
+
+models:
+  - name: order_details_wide
+    description: A wide table combining order line details with related order, customer, and seller information
+    columns:
+      # Order Line Details
+      - name: order_id
+        description: Unique identifier for the order
+        tests:
+          - not_null
+          - relationships:
+              to: ref('fact_orders')
+              field: order_id
+
+      - name: order_item_id
+        description: Unique identifier for the item within the order
+        tests:
+          - not_null
+
+      - name: shipping_limit_datetime
+        description: Latest datetime by which the seller must ship the item
+
+      - name: item_price
+        description: Price of the individual item
+
+      - name: item_freight_value
+        description: Shipping cost for the individual item
+
+      # Order Details
+      - name: order_status
+        description: Current status of the order (e.g., Delivered, Canceled, Processing)
+
+      - name: order_item_count
+        description: Total number of items in the order
+
+      - name: order_item_price_total
+        description: Total price of all items in the order before shipping
+
+      - name: order_freight_total
+        description: Total shipping cost for the order
+
+      - name: order_total
+        description: Total order value including items and shipping
+
+      - name: payment_count
+        description: Number of payment transactions for this order
+
+      - name: payment_method_type_count
+        description: Number of different payment methods used
+
+      - name: payment_installment_count
+        description: Total number of installments across all payments
+
+      - name: payment_total
+        description: Total amount paid by customer
+
+      - name: review_score
+        description: Customer's rating of the order (1-5 scale)
+
+      - name: time_to_approval_hours
+        description: Hours between purchase and order approval
+
+      - name: time_to_ship_hours
+        description: Hours between approval and shipping
+
+      - name: time_to_deliver_hours
+        description: Hours between shipping and delivery
+
+      - name: delivery_estimation_slip_hours
+        description: Difference between estimated and actual delivery time
+
+      - name: order_purchase_datetime
+        description: Timestamp when the order was placed
+
+      - name: order_approved_datetime
+        description: Timestamp when the order was approved
+
+      - name: order_delivered_carrier_datetime
+        description: Timestamp when the order was handed to the carrier
+
+      - name: order_delivered_customer_datetime
+        description: Timestamp when the order was delivered to the customer
+
+      - name: order_estimated_delivery_datetime
+        description: Estimated delivery timestamp provided to customer
+
+      # Customer Details
+      - name: customer_id
+        description: Unique identifier for the customer
+
+      - name: customer_city
+        description: City where the customer is located
+
+      - name: customer_state
+        description: State where the customer is located
+
+      - name: customer_zip_code
+        description: Customer's ZIP code
+
+      # Seller Details
+      - name: seller_id
+        description: Unique identifier for the seller
+
+      - name: seller_city
+        description: City where the seller is located
+
+      - name: seller_state
+        description: State where the seller is located
+
+      - name: seller_zip_code
+        description: Seller's ZIP code

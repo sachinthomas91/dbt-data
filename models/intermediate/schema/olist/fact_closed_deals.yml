@@ -1,0 +1,76 @@
+version: 2
+
+models:
+  - name: fact_closed_deals
+    description: Fact table combining closed deals with their originating marketing qualified leads, including all relevant deal and lead metrics
+    config:
+      tags: ['intermediate', 'sales', 'marketing']
+    columns:
+      - name: mql_id
+        description: Unique identifier for the marketing qualified lead that converted to a closed deal
+        tests:
+          - unique
+          - not_null
+
+      - name: seller_id
+        description: Unique identifier for the seller who closed the deal
+
+      - name: sdr_id
+        description: Identifier for the Sales Development Representative assigned to the deal
+
+      - name: sr_id
+        description: Identifier for the Sales Representative who closed the deal
+
+      - name: mql_first_contact_date
+        description: Timestamp when the lead first made contact through a marketing channel
+
+      - name: deal_closed_datetime
+        description: Timestamp when the deal was successfully closed
+
+      - name: days_to_close
+        description: Number of days between first contact and deal closure
+
+      - name: mql_landing_page_id
+        description: ID of the landing page where the lead was initially captured
+
+      - name: mql_origin_category
+        description: Marketing channel that originally generated the lead
+
+      - name: lead_business_segment
+        description: Business segment classification of the lead
+
+      - name: lead_business_category
+        description: Type of business the lead operates
+
+      - name: lead_behaviour_profile_category
+        description: Behavioral classification of the lead
+        tests:
+          - not_null
+
+      - name: has_company
+        description: Whether the lead has a registered company
+        tests:
+          - not_null
+
+      - name: has_gtin
+        description: Whether the lead has Global Trade Item Numbers for their products
+        tests:
+          - not_null
+
+      - name: lead_business_average_stock
+        description: Average stock level maintained by the business
+        tests:
+          - dbt_expectations.expect_column_values_to_be_greater_than_or_equal_to:
+              value: 0
+
+      - name: lead_business_product_catalog_size
+        description: Number of products in the business's catalog
+        tests:
+          - dbt_expectations.expect_column_values_to_be_greater_than_or_equal_to:
+              value: 0
+
+      - name: lead_business_monthly_revenue
+        description: Declared monthly revenue of the business
+        tests:
+          - dbt_expectations.expect_column_values_to_be_greater_than_or_equal_to:
+              value: 0

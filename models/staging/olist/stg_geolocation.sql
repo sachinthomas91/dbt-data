@@ -6,7 +6,7 @@ renamed as (
     select
         geolocation_zip_code_prefix as zip_code,
         INITCAP(geolocation_city) as city,
-        INITCAP(geolocation_state) as state
+        UPPER(geolocation_state) as state
     from 
         source
     where 

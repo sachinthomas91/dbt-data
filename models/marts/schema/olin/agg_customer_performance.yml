@@ -1,0 +1,68 @@
+version: 2
+
+models:
+  - name: agg_customer_performance
+    description: Customer-level aggregated performance metrics including purchase history, order values, and satisfaction scores
+    columns:
+      - name: customer_id
+        description: Unique identifier for each customer
+        tests:
+          - not_null
+          - unique
+          - relationships:
+              to: ref('fact_orders')
+              field: customer_id
+
+      - name: first_purchase_date
+        description: Date of customer's first order
+
+      - name: last_purchase_date
+        description: Date of customer's most recent order
+
+      - name: days_since_last_purchase
+        description: Number of days between the last purchase and current date
+
+      - name: life_time_customer_value
+        description: Total monetary value of all orders placed by the customer (rounded to 2 decimal places)
+
+      - name: avg_order_value
+        description: Average monetary value per order for this customer (rounded to 2 decimal places)
+
+      - name: total_order_count
+        description: Total number of orders placed by this customer
+
+      - name: canceled_order_count
+        description: Number of orders that were canceled by this customer
+
+      - name: unavaialble_order_count
+        description: Number of orders that were marked as unavailable for this customer
+
+      - name: lost_revenue_canceled
+        description: Total revenue lost from canceled orders for this customer (rounded to 2 decimal places)
+
+      - name: lost_revenue_unavailable
+        description: Total revenue lost from unavailable orders for this customer (rounded to 2 decimal places)
+
+      - name: avg_review_score
+        description: Average review score given by this customer, rated on a scale of 1-5 (rounded to 2 decimal places)
+
+      - name: avg_monthly_orders
+        description: Average number of orders per month, calculated as (total orders / months since first purchase) * 30 (rounded to 2 decimal places)
+
+      - name: avg_monthly_spend
+        description: Average monthly spending, calculated as (total spend / months since first purchase) * 30 (rounded to 2 decimal places)
+
+      - name: problem_order_rate
+        description: Percentage of orders that were either canceled or unavailable (rounded to 2 decimal places)
+
+      - name: order_value_stddev
+        description: Standard deviation of order values, indicating variability in customer's order amounts (rounded to 2 decimal places)
+
+      - name: positive_review_rate
+        description: Percentage of reviews that were 4 stars or higher (rounded to 2 decimal places)
+
+      - name: customer_status
+        description: Customer's current status based on last purchase date - 'Active' (within 30 days), 'At Risk' (31-90 days), 'Churning' (91-180 days), or 'Churned' (180+ days)
+
+      - name: customer_value_tier
+        description: Customer value segment based on average monthly spend - 'High Value' (≥$1000/month), 'Medium Value' (≥$500/month), or 'Low Value' (<$500/month)

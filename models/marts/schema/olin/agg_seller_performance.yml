@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: agg_seller_performance
+    description: Seller-level aggregated performance metrics including sales history, order values, and satisfaction scores
+    columns:
+      - name: seller_id
+        description: Unique identifier for each seller
+        tests:
+          - not_null
+          - unique
+
+      - name: first_sale_date
+        description: Date of seller's first sale
+
+      - name: last_sale_date
+        description: Date of seller's most recent sale
+
+      - name: days_since_last_sale
+        description: Number of days between the last sale and current date
+
+      - name: life_time_seller_sales_value
+        description: Total value of all orders processed by the seller
+
+      - name: avg_sale_value
+        description: Average value per order for this seller
+
+      - name: total_order_count
+        description: Total number of orders processed by this seller
+
+      - name: canceled_order_count
+        description: Number of orders that were canceled for this seller
+
+      - name: unavaialble_order_count
+        description: Number of orders that were marked as unavailable for this seller
+
+      - name: lost_revenue_canceled
+        description: Total revenue lost from canceled orders for this seller
+
+      - name: lost_revenue_unavailable
+        description: Total revenue lost from unavailable orders for this seller
+
+      - name: avg_review_score
+        description: Average review score received by this seller (1-5 scale)

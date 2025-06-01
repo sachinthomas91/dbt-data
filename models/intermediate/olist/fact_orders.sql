@@ -14,6 +14,10 @@ with orders as (
   select * from {{ ref('stg_reviews')}}
 )
 
+,dim_customers as (
+  select * from {{ ref('dim_customers')}}
+)
+
 ,aggregate_order_lines as (
   select 
      order_id
@@ -50,7 +54,7 @@ with orders as (
 
 select
    ord.order_id
-  ,ord.order_customer_id
+  ,cust.customer_id
   ,ord.order_status
   ,coalesce(lin.order_item_count, 0) as order_item_count
   ,coalesce(lin.order_item_price_total, 0) as order_item_price_total
@@ -78,3 +82,5 @@ from
     on ord.order_id=pay.order_id
   left join aggregate_reviews rev
     on ord.order_id=rev.order_id
+  left join dim_customers cust
+    on ord.order_customer_id=cust.order_customer_id

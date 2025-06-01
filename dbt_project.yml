@@ -60,18 +60,6 @@ models:
         +persist_docs:
           relation: true     # persist table descriptions
           columns: true      # persist column descriptions
-      core:
-        +schema: core
-        +materialized: table
-        +persist_docs:
-          relation: true     # persist table descriptions
-          columns: true      # persist column descriptions
-      finance:
-        +schema: finance
-        +materialized: table
-        +persist_docs:
-          relation: true     # persist table descriptions
-          columns: true      # persist column descriptions
 
 # This is the default schema where dbt will create seeds and snapshots.
 # You can override this in your dbt profile.
