@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: customer_segments
+    description: RFM (Recency, Frequency, Monetary) based customer segmentation model that classifies customers into meaningful business segments
+    config:
+      tags: ['marts', 'customer', 'segmentation']
+    columns:
+      - name: customer_id
+        description: Unique identifier for each customer
+
+      - name: r_score
+        description: Recency score (1-5) based on days since last purchase. Higher score means more recent purchase.
+
+      - name: f_score
+        description: Frequency score (1-5) based on total number of orders. Higher score means more frequent purchases
+
+      - name: m_score
+        description: Monetary score (1-5) based on lifetime customer value. Higher score means higher value customer
+
+      - name: rfm_segment_score
+        description: Combined RFM score as a string (e.g., '555' for top customers across all dimensions)
+
+      - name: customer_segment
+        description: Business-friendly segment name based on RFM scores
+        
