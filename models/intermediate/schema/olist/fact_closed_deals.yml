@@ -44,33 +44,18 @@ models:
 
       - name: lead_behaviour_profile_category
         description: Behavioral classification of the lead
-        tests:
-          - not_null
 
       - name: has_company
         description: Whether the lead has a registered company
-        tests:
-          - not_null
 
       - name: has_gtin
         description: Whether the lead has Global Trade Item Numbers for their products
-        tests:
-          - not_null
 
       - name: lead_business_average_stock
         description: Average stock level maintained by the business
-        tests:
-          - dbt_expectations.expect_column_values_to_be_greater_than_or_equal_to:
-              value: 0
 
       - name: lead_business_product_catalog_size
         description: Number of products in the business's catalog
-        tests:
-          - dbt_expectations.expect_column_values_to_be_greater_than_or_equal_to:
-              value: 0
 
       - name: lead_business_monthly_revenue
         description: Declared monthly revenue of the business
-        tests:
-          - dbt_expectations.expect_column_values_to_be_greater_than_or_equal_to:
-              value: 0

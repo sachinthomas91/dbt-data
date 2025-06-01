@@ -1,0 +1,104 @@
+version: 2
+
+models:
+  - name: mql_details_wide
+    description: Wide table combining marketing qualified lead data with seller performance metrics to analyze marketing channel effectiveness and seller success
+    config:
+      tags: ['marts', 'analytics', 'marketing', 'sales', 'seller_performance']
+    
+    columns:
+      # Marketing and Deal Information
+      - name: mql_id
+        description: Unique identifier for the marketing qualified lead
+        tests:
+          - not_null
+          - unique
+
+      - name: seller_id
+        description: Unique identifier for the seller
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_sellers')
+              field: seller_id
+
+      - name: mql_first_contact_date
+        description: Timestamp when the lead first made contact through a marketing channel
+
+      - name: deal_closed_datetime
+        description: Timestamp when the deal was successfully closed
+
+      - name: days_to_close
+        description: Number of days between first contact and deal closure
+
+      - name: mql_origin_category
+        description: Marketing channel that originally generated the lead
+
+      # Lead Profile Information
+      - name: lead_business_segment
+        description: Business segment classification of the lead
+
+      - name: lead_business_category
+        description: Type of business the lead operates
+
+      - name: lead_behaviour_profile_category
+        description: Behavioral classification of the lead
+
+      - name: declared_monthly_revenue
+        description: Monthly revenue declared by the lead during qualification
+
+      - name: declared_catalog_size
+        description: Number of products in catalog declared by the lead
+
+      - name: declared_avg_stock
+        description: Average stock level declared by the lead
+
+      - name: has_company
+        description: Whether the lead has a registered company (true/false)
+
+      - name: has_gtin
+        description: Whether the lead has Global Trade Item Numbers for their products (true/false)
+
+      # Actual Seller Performance Metrics
+      - name: first_sale_date
+        description: Date of seller's first sale
+
+      - name: last_sale_date
+        description: Date of seller's most recent sale
+
+      - name: days_since_last_sale
+        description: Number of days between the last sale and current date
+
+      - name: life_time_seller_sales_value
+        description: Total value of all orders processed by the seller
+
+      - name: avg_sale_value
+        description: Average value per order for this seller
+
+      - name: lost_revenue_canceled
+        description: Total revenue lost from canceled orders
+
+      - name: lost_revenue_unavailable
+        description: Total revenue lost from unavailable orders
+
+      - name: avg_review_score
+        description: Average review score received by the seller (1-5 scale)
+
+      - name: seller_status
+        description: Current activity status based on last sale - 'Active' (≤30 days), 'At Risk' (31-90 days), 'Churning' (91-180 days), or 'Churned' (>180 days)
+
+      # Calculated Performance Indicators
+      - name: actual_vs_declared_revenue_ratio
+        description: Ratio of actual seller revenue to declared monthly revenue (rounded to 2 decimal places)
+
+      - name: days_to_first_sale
+        description: Number of days between deal closure and first sale
+
+      - name: avg_monthly_orders
+        description: Average number of orders processed per month
+
+      - name: avg_monthly_revenue
+        description: Average revenue generated per month
+
+      - name: order_problem_rate
+        description: Percentage of orders that were either canceled or unavailable
