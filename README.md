@@ -1,6 +1,12 @@
-# DBT Core Project Setup Guide for Google BigQuery
+# DBT Core Project with Olist E-commerce Data Analysis
 
-This guide walks you through setting up a new DBT Core project with **Google BigQuery** as the data warehouse.
+This project demonstrates a real-world DBT implementation using **Google BigQuery** as the data warehouse. The project analyzes Brazilian e-commerce data from Olist, using public datasets available on Kaggle:
+
+- [Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
+- [Marketing Funnel by Olist](https://www.kaggle.com/datasets/olistbr/marketing-funnel-olist)
+
+Data citation:
+> Olist. (2018). Brazilian E-Commerce Public Dataset & Marketing Funnel Dataset. Kaggle. https://www.kaggle.com/olistbr
 
 ---
 
