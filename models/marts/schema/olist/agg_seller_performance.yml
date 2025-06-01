@@ -42,3 +42,15 @@ models:
 
       - name: avg_review_score
         description: Average review score received by this seller (1-5 scale)
+
+      - name: avg_monthly_orders
+        description: Average number of orders processed per month (rounded to 2 decimal places)
+
+      - name: avg_monthly_revenue
+        description: Average revenue generated per month (rounded to 2 decimal places)
+
+      - name: order_problem_rate
+        description: Percentage of orders that were either canceled or unavailable (rounded to 2 decimal places)
+
+      - name: seller_status
+        description: Current activity status based on last sale - 'Active' (within 30 days), 'At Risk' (31-90 days), 'Churning' (91-180 days), or 'Churned' (180+ days)

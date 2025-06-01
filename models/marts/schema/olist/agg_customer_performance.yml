@@ -46,6 +46,15 @@ models:
       - name: avg_review_score
         description: Average review score given by this customer, rated on a scale of 1-5 (rounded to 2 decimal places)
 
+      - name: customer_lifetime_days
+        description: Total number of days between customer's first and last purchase
+
+      - name: order_value_stddev
+        description: Standard deviation of order values for this customer (rounded to 2 decimal places)
+
+      - name: positive_review_rate
+        description: Percentage of reviews that were 4 or 5 stars (rounded to 2 decimal places)
+
       - name: avg_monthly_orders
         description: Average number of orders per month, calculated as (total orders / months since first purchase) * 30 (rounded to 2 decimal places)
 
@@ -54,12 +63,6 @@ models:
 
       - name: problem_order_rate
         description: Percentage of orders that were either canceled or unavailable (rounded to 2 decimal places)
-
-      - name: order_value_stddev
-        description: Standard deviation of order values, indicating variability in customer's order amounts (rounded to 2 decimal places)
-
-      - name: positive_review_rate
-        description: Percentage of reviews that were 4 stars or higher (rounded to 2 decimal places)
 
       - name: customer_status
         description: Customer's current status based on last purchase date - 'Active' (within 30 days), 'At Risk' (31-90 days), 'Churning' (91-180 days), or 'Churned' (180+ days)
