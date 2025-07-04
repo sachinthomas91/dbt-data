@@ -4,6 +4,7 @@
 /logs/
 
 # Python virtual environments
+.venv/
 /venv*/
 /dbt-env/
 /venv-genai/
